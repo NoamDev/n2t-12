@@ -8,6 +8,7 @@
  * A library that supports various program execution services.
  */
 class Sys {
+    static String err_msg;
     /** Performs all the initializations required by the OS. */
     function void init() {
         // Pseudocode:
@@ -15,18 +16,44 @@ class Sys {
         //    Some OS classes depend on others, so order is important here!
         // 2. do Main.main()
         // 3. do Sys.halt()
+        do Memory.init();
+        do Keyboard.init();
+        do Math.init();
+        do Output.init();
+        do Screen.init();
+        
+        do Main.main();
+        do Sys.halt();
+        return;
     }
 
     /** Halts program execution. */
     function void halt() {
+        while(true) {}
+        return;
     }
 
     /** Waits approximately duration milliseconds and returns.  */
     function void wait(int duration) {
+        var int cycles;
+        while(duration > 0) {
+            let duration = duration-1;
+            let cycles = 0;
+            while(cycles < 15) {
+                let cycles = cycles+1;
+            }
+        }
+        return;
     }
 
     /** Displays the given error code in the form "ERR<errorCode>",
      *  and halts the program's execution. */
     function void error(int errorCode) {
+        do Output.moveCursor(0,0);
+        do Output.printChar(69);
+        do Output.printChar(82);
+        do Output.printChar(82);
+        do Output.printInt(errorCode);
+        return;
     }
 }
