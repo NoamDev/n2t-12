@@ -63,6 +63,28 @@ class String {
         // 3.   let d = integer value of str.charAt(i)
         // 4.   let val = (val*10) + d
         // 5. return val
+        var int val;
+        var int d;
+        var int i;
+        var bool is_positive;
+        let val = 0;
+        if (charAt(0) = 45) {
+            let is_positive = false;
+            let i = 1;
+        } else {
+            let is_positive = true;
+            let i = 0;
+        }
+        while(i < length()) {
+           let d = charAt(i) - 48;
+           let val = (val*10) + d;
+           let i = i+1;
+        }
+        if(is_positive) {
+            return val
+        } else {
+            return -val;
+        }
     }
 
     /** Sets this string to hold a representation of the given value. */
