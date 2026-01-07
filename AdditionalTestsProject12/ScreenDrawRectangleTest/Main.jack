@@ -1,0 +1,13 @@
+/** Test program for the OS Screen class. */
+class Main {
+
+    function void main() {
+	    // draw a rectangle at center of screen
+        do Screen.drawRectangle(28, 28, 36, 36);
+
+        return;
+    }
+}
+
+
+

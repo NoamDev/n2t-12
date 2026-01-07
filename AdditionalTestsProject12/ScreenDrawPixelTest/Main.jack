@@ -1,0 +1,16 @@
+/** Test program for the OS Screen class. */
+class Main {
+
+    function void main() {
+	    // draw some pixels
+        do Screen.drawPixel(1,1);
+        do Screen.drawPixel(100,1);
+        do Screen.drawPixel(10,10);
+        do Screen.drawPixel(100,10);
+
+        return;
+    }
+}
+
+
+

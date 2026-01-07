@@ -1,0 +1,53 @@
+function Main.main 3
+push constant 8000
+pop local 1
+push constant 10
+call String.new 1
+pop local 2
+push constant 0
+push local 1
+add
+push local 2
+call String.length 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 2
+push constant 49
+call String.appendChar 2
+pop temp 0
+push local 2
+push constant 49
+call String.appendChar 2
+pop temp 0
+push local 2
+push constant 49
+call String.appendChar 2
+pop temp 0
+push constant 1
+push local 1
+add
+push local 2
+call String.length 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 2
+call String.eraseLastChar 1
+pop temp 0
+push constant 2
+push local 1
+add
+push local 2
+call String.length 1
+pop temp 0
+pop pointer 1
+push temp 0
+pop that 0
+push local 2
+call String.dispose 1
+pop temp 0
+push constant 0
+return

@@ -1,0 +1,14 @@
+// Check the tst file to see which key is pressed and what is the expected output.
+
+/** Test program for the OS Keyboard class. */
+class Main {
+
+    function void main() {
+
+        var Array a;
+    	let a[8000] = Keyboard.readChar(); // read char from keyboard to address 8000
+        return;
+
+    }
+
+}

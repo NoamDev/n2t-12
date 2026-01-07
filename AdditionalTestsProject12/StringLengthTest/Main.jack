@@ -1,0 +1,29 @@
+/** Test program for the OS String class. */
+class Main {
+
+    /** Performs various string manipulations and displays their results. */
+    function void main() {
+        var Array screenArray, r;
+        var String str1;
+
+        // output location
+        let r = 8000;
+
+        let str1 = String.new(10); 
+	    let r[0] = str1.length(); // get the string curr length
+
+	    // append some chars
+	    do str1.appendChar(49);
+	    do str1.appendChar(49);
+	    do str1.appendChar(49);
+	    // recheck
+	    let r[1] = str1.length();
+	    // remove last char
+	    do str1.eraseLastChar();
+	    // recheck
+	    let r[2] = str1.length();
+
+        do str1.dispose();
+        return;
+    }
+}

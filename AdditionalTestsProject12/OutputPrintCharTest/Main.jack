@@ -1,0 +1,13 @@
+/** Test program for the OS Output class. */
+class Main {
+
+    function void main() {
+	
+        do Output.printChar(105); // should print the char 'i'
+
+        return;
+    }
+}
+
+
+
