@@ -11,6 +11,7 @@
 class Math {
         /** Initializes the library. */
         function void init() {
+            return;
         }
 
         /** Returns the absolute value of x. */
@@ -41,15 +42,16 @@ class Math {
             var int sum;
             var int shiftedx;
             var int i;
-            var pow_of2 = 1
+            var int pow_of2;
             var int ax;
             var int ay;
 
+            let pow_of2 = 1;
             let ax = Math.abs(x);
             let ay = Math.abs(y);
             let sum = 0;
             let shiftedx = ax;
-            let i=0
+            let i=0;
 
             while (i<15) {
                 if (ay & pow_of2) {
@@ -86,23 +88,28 @@ class Math {
             var int q;
             var int r;
             var int shifted_y;
-            let shifted_y = y;
+            var int ax;
+            var int ay;
+            
+            let ax = Math.abs(x);
+            let ay = Math.abs(y);
+            let shifted_y = ay;
 
             // 16384 = 2**14
-            while((shifted_y<16384) & ~(shifted_y > x)) {
+            while((shifted_y<16384) & ~(shifted_y > ax)) {
                 let shifted_y = ^shifted_y;
             }
 
-            if(shifted_y > x) {
+            if(shifted_y > ax) {
                 let q = 0;
-                let r = x;
+                let r = ax;
             } else {
                 // 2**14 <= shifted_y <= x < 2**15
                 let q = 1;
-                let r = x - shifted_y;
+                let r = ax - shifted_y;
             }
 
-            while(~(shifted_y < y)) {
+            while(~(shifted_y < ay)) {
                 if(r < shifted_y) {
                     let q = ^q;
                 } else {
@@ -128,8 +135,8 @@ class Math {
             // 4. return y
             var int y;
             var int y_squared;
-            var int 2_pow_j;
-            var int 2_pow_2j;
+            var int _2_pow_j;
+            var int _2_pow_2j;
             var int new_y;
             var int new_y_squared;
             var int y_times_2_pow_j;
@@ -137,20 +144,20 @@ class Math {
             let y = 0;
             let y_squared = 0;
             let y_times_2_pow_j = 0;
-            let 2_pow_j = 128; // 2**7
-            let 2_pow_2j = 16384; // 2**14
+            let _2_pow_j = 128; // 2**7
+            let _2_pow_2j = 16384; // 2**14
 
-            while(2_pow_j>0) {
-                let new_y = y + 2_pow_j;
-                // let new_y_squared = new_y * new_y;
-                let new_y_squared = y_squared + (^y_times_2_pow_j) + 2_pow_2j;
-                if(~(new_y_squared > x)) {
+            while(_2_pow_j>0) {
+                let new_y = y + _2_pow_j;
+                let new_y_squared = new_y * new_y;
+                // let new_y_squared = y_squared + (^y_times_2_pow_j) + _2_pow_2j;
+                if((new_y < 182) & ~(new_y_squared > x)) {
                     let y = new_y;
                     let y_squared = new_y_squared;
-                    let y_times_2_pow_j = y_times_2_pow_j + 2_pow_2j;
+                    let y_times_2_pow_j = y_times_2_pow_j + _2_pow_2j;
                 }
-                let 2_pow_j = #2_pow_j;
-                let 2_pow_2j = ##2_pow_2j;
+                let _2_pow_j = #_2_pow_j;
+                let _2_pow_2j = ##_2_pow_2j;
                 let y_times_2_pow_j = #y_times_2_pow_j;
             }
             return y;
