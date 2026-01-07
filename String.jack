@@ -12,9 +12,15 @@
  * string-oriented operations.
  */
 class String {
+    field Array chars;
+    field int maxLength;
+    field int length;
     /** constructs a new empty string with a maximum length of maxLength
      *  and initial length of 0. */
-    constructor String new(int maxLength) {
+    constructor String new(int _maxLength) {
+        let chars = Array.new(_maxLength);
+        let maxLength = _maxLength;
+        let length = 0;
     }
 
     /** Disposes this string. */
