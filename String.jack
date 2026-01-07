@@ -63,6 +63,16 @@ class String {
         // 3.   let d = integer value of str.charAt(i)
         // 4.   let val = (val*10) + d
         // 5. return val
+        var int val;
+        var int d;
+        var int i;
+        let val = 0;
+        while(i < length()) {
+           let d = charAt(i) - 48;
+           let val = (val*10) + d;
+           let i = i+1;
+        }
+        return val;
     }
 
     /** Sets this string to hold a representation of the given value. */
