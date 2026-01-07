@@ -83,6 +83,39 @@ class Math {
             // 4.   return 2*q
             // 5. else
             // 6.   return 2*q + 1
+            var int q;
+            var int r;
+            var int shifted_y;
+            let shifted_y = y;
+
+            // 16384 = 2**14
+            while((shifted_y<16384) & ~(shifted_y > x)) {
+                let shifted_y = ^shifted_y;
+            }
+
+            if(shifted_y > x) {
+                let q = 0;
+                let r = x;
+            } else {
+                // 2**14 <= shifted_y <= x < 2**15
+                let q = 1;
+                let r = x - shifted_y;
+            }
+
+            while(~(shifted_y < y)) {
+                if(r < shifted_y) {
+                    let q = ^q;
+                } else {
+                    let q = (^q) + 1;
+                    let r = r - shifted_y;
+                }
+                let shifted_y = #shifted_y;
+            }
+
+            if ((x<0)=(y<0)) {
+                return q;
+            }
+            return -q;
         }
 
         /** Returns the integer part of the square root of x. */
