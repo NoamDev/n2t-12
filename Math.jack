@@ -37,6 +37,33 @@ class Math {
             // 5.      let sum = sum + shiftedx
             // 6.   let shiftedx = 2*shiftedx
             // 7. return sum
+             
+            var int sum;
+            var int shiftedx;
+            var int i;
+            var pow_of2 = 1
+            var int ax;
+            var int ay;
+
+            let ax = Math.abs(x);
+            let ay = Math.abs(y);
+            let sum = 0;
+            let shiftedx = ax;
+            let i=0
+
+            while (i<15) {
+                if (ay & pow_of2) {
+                    let sum = sum + shiftedx;
+                }
+                let pow_of2 = ^pow_of2;
+                let shiftedx = ^shiftedx;
+                let i = i+1;
+            }
+
+            if ((x<0)=(y<0)) {
+                return sum;
+            }
+            return -sum;
         }
 
         /** 
