@@ -66,6 +66,34 @@ class Math {
             // 2. for j = (n/2 - 1) ... 0 do
             // 3.   if ((y + 2**j)**2 <= x) then let y = y + 2**j
             // 4. return y
+            var int y;
+            var int y_squared;
+            var int 2_pow_j;
+            var int 2_pow_2j;
+            var int new_y;
+            var int new_y_squared;
+            var int y_times_2_pow_j;
+
+            let y = 0;
+            let y_squared = 0;
+            let y_times_2_pow_j = 0;
+            let 2_pow_j = 128; // 2**7
+            let 2_pow_2j = 16384; // 2**14
+
+            while(2_pow_j>0) {
+                let new_y = y + 2_pow_j;
+                // let new_y_squared = new_y * new_y;
+                let new_y_squared = y_squared + (^y_times_2_pow_j) + 2_pow_2j;
+                if(~(new_y_squared > x)) {
+                    let y = new_y;
+                    let y_squared = new_y_squared;
+                    let y_times_2_pow_j = y_times_2_pow_j + 2_pow_2j;
+                }
+                let 2_pow_j = #2_pow_j;
+                let 2_pow_2j = ##2_pow_2j;
+                let y_times_2_pow_j = #y_times_2_pow_j;
+            }
+            return y;
         }
 
         /** Returns the greater number. */
