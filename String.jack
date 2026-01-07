@@ -13,18 +13,18 @@
  */
 class String {
     field Array chars;
-    field int maxLength;
     field int length;
     /** constructs a new empty string with a maximum length of maxLength
      *  and initial length of 0. */
-    constructor String new(int _maxLength) {
-        let chars = Array.new(_maxLength);
-        let maxLength = _maxLength;
+    constructor String new(int maxLength) {
+        let chars = Array.new(maxLength);
         let length = 0;
     }
 
     /** Disposes this string. */
     method void dispose() {
+        do chars.dispose();
+        do Memory.deAlloc(self);
     }
 
     /** Returns the current length of this string. */
@@ -41,10 +41,13 @@ class String {
 
     /** Appends c to this string's end and returns this string. */
     method String appendChar(char c) {
+        let chars[length] = c;
+        let length = length+1;
     }
 
     /** Erases the last character from this string. */
     method void eraseLastChar() {
+        let length = length - 1;
     }
 
     /** Returns the integer value of this string, 
@@ -71,6 +74,7 @@ class String {
 
     /** Returns the new line character. */
     function char newLine() {
+        
     }
 
     /** Returns the backspace character. */
