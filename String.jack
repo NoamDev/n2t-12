@@ -74,6 +74,27 @@ class String {
         // 4.   return c (as a string)
         // 5. else
         // 6.   return int2String(val / 10).appendChar(c)
+        
+        var int lastDigit;
+        var char c;
+        var int tenth_part;
+
+        if (val < 0){
+            do appendChar(45);
+        }
+        let val = Math.abs(val);
+        let tenth_part = Math.divide(val,10);
+        let lastDigit = val - Math.multiply(tenth_part,10);
+        let c = 48 + lastDigit;
+        if (val < 10) {
+            do appendChar(c);
+        }
+        else {
+            do int2String(tenth_part);
+            do appendChar(c);
+        }
+        return;
+
     }
 
     /** Returns the new line character. */
