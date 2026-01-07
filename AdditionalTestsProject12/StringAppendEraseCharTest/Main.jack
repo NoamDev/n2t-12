@@ -1,0 +1,33 @@
+/** Test program for the OS String class. */
+
+class Main {
+    function void main() {
+        var Array r;
+        var String str1;
+
+        // output location
+        let r = 8000;
+
+        // create a string "-" + "1" + "1" + "A" + "a" + "~"
+        let str1 = String.new(6);
+        do str1.appendChar(45); // '-'
+        do str1.appendChar(49); // '1'
+        do str1.appendChar(49); // '1'
+        do str1.appendChar(65); // 'A'
+        do str1.appendChar(97); // 'a'
+        do str1.appendChar(126); // '~'
+
+        let r[0] = str1.length(); // get the string curr length
+        let r[1 + 0] = str1.charAt(0); // get the string values
+        let r[1 + 1] = str1.charAt(1); 
+        let r[1 + 2] = str1.charAt(2); 
+        let r[1 + 3] = str1.charAt(3); 
+        let r[1 + 4] = str1.charAt(4); 
+        let r[1 + 5] = str1.charAt(5); 
+
+	do str1.eraseLastChar();
+        let r[7] = str1.length(); // get the string curr length
+
+        return;
+    }
+}

@@ -1,0 +1,13 @@
+/** Test program for the OS Sys class. */
+class Main {
+
+    /** Halt the program. */
+    function void main() {
+        var Array r;          
+        let r = 8000;
+        let r[0] = 1;  // should change address 8000
+	do Sys.halt(); // halt
+        let r[0] = 2;  // should not change address 8000
+        return;
+    }
+}

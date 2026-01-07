@@ -1,0 +1,15 @@
+/** Test program for the OS Output class. */
+class Main {
+
+    function void main() {
+	
+        do Output.printChar(102); // should print the char 'f'
+        do Output.moveCursor(0, 1); // should move to next line
+        do Output.printChar(103); // should print the char 'g'
+
+        return;
+    }
+}
+
+
+

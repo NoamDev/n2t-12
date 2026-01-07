@@ -1,0 +1,19 @@
+function Main.main 0
+push constant 1
+push constant 1
+call Screen.drawPixel 2
+pop temp 0
+push constant 100
+push constant 1
+call Screen.drawPixel 2
+pop temp 0
+push constant 10
+push constant 10
+call Screen.drawPixel 2
+pop temp 0
+push constant 100
+push constant 10
+call Screen.drawPixel 2
+pop temp 0
+push constant 0
+return
