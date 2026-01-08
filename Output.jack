@@ -7,7 +7,7 @@
 
 /**
  * A library of functions for writing text on the screen.
- * The Hack physical screen consists of 512 rows of 256 pixels each.
+ * The Hack physical screen consists of 256 rows of 512 pixels each.
  * The library uses a fixed font, in which each character is displayed 
  * within a frame which is 11 pixels high (including 1 pixel for inter-line 
  * spacing) and 8 pixels wide (including 2 pixels for inter-character spacing).
@@ -22,11 +22,13 @@ class Output {
     static Array charMaps; 
     static int row;
     static int col;
+    static int START;
 
     /** Initializes the screen, and locates the cursor at the screen's top-left. */
     function void init() {
         let row = 0;
         let col = 0;
+        let START = 16416;
         do initMap();
     }
 
@@ -183,6 +185,9 @@ class Output {
     /** Moves the cursor to the j-th column of the i-th row,
      *  and erases the character displayed there. */
     function void moveCursor(int i, int j) {
+        let row = i;
+        let col = j;
+        
     }
 
     /** Displays the given character at the cursor location,
@@ -190,7 +195,35 @@ class Output {
     function void printChar(char c) {
         // Your implementation should be as efficient as possible.
         // For example, you can draw multiple pixels at once, for each row.
+        
+
     }
+
+    /** Displays the given character at the cursor location,
+     *  and  doesn't advance the cursor one column forward. */
+    function void printChar_helper(char c) {
+        var int is_odd, word, i, value; 
+        var Array map;
+    
+        let map = getMap(c);
+        let i = 0;
+        let is_odd = col - (^(#col));
+        let word = START + ((352 * row) + #col) //352 = 32 * 11 = pixel_row_width * char_hight
+  
+        while (i < 11) {   
+            let value = Memory.peek(word);
+            if (is_odd) {
+                let value = ((~255) & value) + map[i];
+            } else {
+                let value = (255 & value) + (^^^^^^^^map[i]);
+            }
+            do Memory.poke(word,value);
+            let word = word + 32;
+            let i = i + 1;
+        }
+
+        return;
+     }
 
     /** displays the given string starting at the cursor location,
      *  and advances the cursor appropriately. */
