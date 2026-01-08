@@ -30,10 +30,12 @@ class Output {
         let col = 0;
         let START = 16416;
         do initMap();
+        return;
     }
 
     // Initializes the character map array
     function void initMap() {
+        
         var int i;
     
         let charMaps = Array.new(127);
@@ -195,8 +197,18 @@ class Output {
     function void printChar(char c) {
         // Your implementation should be as efficient as possible.
         // For example, you can draw multiple pixels at once, for each row.
-        
-
+        printChar_helper(c);
+        if(col=63) {
+            let col = 0;
+            if(row = 22) {
+                let row = 0;
+            } else {
+                let row = row + 1;
+            }
+        } else {
+            let col = col + 1;
+        }
+        return;
     }
 
     /** Displays the given character at the cursor location,
@@ -228,18 +240,50 @@ class Output {
     /** displays the given string starting at the cursor location,
      *  and advances the cursor appropriately. */
     function void printString(String s) {
+        var int i;
+        var int length;
+        let i = 0;
+        let length = s.length();
+        while(i < length) {
+            do Output.printChar(s.charAt(i));
+        }
+        return;
     }
 
     /** Displays the given integer starting at the cursor location,
      *  and advances the cursor appropriately. */
     function void printInt(int i) {
+        var String s;
+        let s = String.new(6);
+        do s.setInt(i);
+        do Output.printString(i);
+        return;
     }
 
     /** Advances the cursor to the beginning of the next line. */
     function void println() {
+        let col = 0;
+        if(row = 22) {
+            let row = 0;
+        } else {
+            let row = row + 1;
+        }
+        return;
     }
 
     /** Moves the cursor one column back. */
     function void backSpace() {
+        if (col = 0) {
+            let col = 63;
+            if(row = 0) {
+                let row = 22;
+            } else {
+                let row = row - 1;
+            }
+        } else {
+            let col = col - 1;
+        }
+        do Output.printChar_helper(32);
+        return;
     }
 }
