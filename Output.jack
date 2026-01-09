@@ -29,7 +29,7 @@ class Output {
         let row = 0;
         let col = 0;
         let START = 16416;
-        do initMap();
+        do Output.initMap();
         return;
     }
 
@@ -189,7 +189,8 @@ class Output {
     function void moveCursor(int i, int j) {
         let row = i;
         let col = j;
-        
+        do Output.printChar_helper(32);
+        return;
     }
 
     /** Displays the given character at the cursor location,
@@ -197,7 +198,7 @@ class Output {
     function void printChar(char c) {
         // Your implementation should be as efficient as possible.
         // For example, you can draw multiple pixels at once, for each row.
-        printChar_helper(c);
+        do Output.printChar_helper(c);
         if(col=63) {
             let col = 0;
             if(row = 22) {
@@ -217,17 +218,17 @@ class Output {
         var int is_odd, word, i, value; 
         var Array map;
     
-        let map = getMap(c);
+        let map = Output.getMap(c);
         let i = 0;
         let is_odd = col - (^(#col));
-        let word = START + ((352 * row) + #col) //352 = 32 * 11 = pixel_row_width * char_hight
+        let word = START + ((352 * row) + #col); //352 = 32 * 11 = pixel_row_width * char_hight
   
-        while (i < 11) {   
+     while (i < 11) {   
             let value = Memory.peek(word);
             if (is_odd) {
-                let value = ((~255) & value) + map[i];
-            } else {
                 let value = (255 & value) + (^^^^^^^^map[i]);
+            } else {
+                let value = ((~255) & value) + map[i];
             }
             do Memory.poke(word,value);
             let word = word + 32;
@@ -235,7 +236,7 @@ class Output {
         }
 
         return;
-     }
+    }
 
     /** displays the given string starting at the cursor location,
      *  and advances the cursor appropriately. */
@@ -246,6 +247,7 @@ class Output {
         let length = s.length();
         while(i < length) {
             do Output.printChar(s.charAt(i));
+            let i = i + 1;
         }
         return;
     }
@@ -256,7 +258,7 @@ class Output {
         var String s;
         let s = String.new(6);
         do s.setInt(i);
-        do Output.printString(i);
+        do Output.printString(s);
         return;
     }
 
