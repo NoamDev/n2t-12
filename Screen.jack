@@ -79,7 +79,7 @@ class Screen {
             var int bit;
 
             let address = (^^^^^y) + (####x); 
-            let bit  = sc & 15;
+            let bit  = x & 15;
             
             if (color) {
                 let SCREEN[address] = SCREEN[address] | masks[bit];
