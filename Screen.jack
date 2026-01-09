@@ -11,17 +11,53 @@
  * the screen is indexed (0,0).
  */
 class Screen {
+
+        static boolean color;
+        static Array SCREEN;
+        static Array masks;
+
         /** Initializes the Screen. */
         function void init() {
-        }
+            let color = true;
+            let SCREEN = 16384;
 
+            let masks = Array.new(16);
+            let masks[0] = 1;
+            let masks[1] = 2;
+            let masks[2] = 4;
+            let masks[3] = 8;
+            let masks[4] = 16;
+            let masks[5] = 32;
+            let masks[6] = 64;
+            let masks[7] = 128;
+            let masks[8] = 256;
+            let masks[9] = 512;
+            let masks[10] = 1024;
+            let masks[11] = 2048;
+            let masks[12] = 4096;
+            let masks[13] = 8192;
+            let masks[14] = 16384;
+            let masks[15] = -(32767) -1;
+           
+            return;
+        }
+        
         /** Erases the entire screen. */
         function void clearScreen() {
+            var int w;
+
+            let w = 0;
+            while (w<8192) {
+                let SCREEN[w] = 0;
+            }
+            return;
         }
 
         /** Sets the current color, to be used for all subsequent drawXXX commands.
          *    Black is represented by true, white by false. */
         function void setColor(boolean b) {
+            let color = b;
+            return;
         }
 
         /** Draws the (x,y) pixel, using the current color. */
@@ -39,6 +75,19 @@ class Screen {
             //    to the pixel to the current color.
             // 4. Use Memory.poke to write the modified 16-bit value to the RAM
             // address.
+            var int address;
+            var int bit;
+
+            let address = (^^^^^y) + (####x); 
+            let bit  = sc & 15;
+            
+            if (color) {
+                let SCREEN[address] = SCREEN[address] | masks[bit];
+            } else {
+                let SCREEN[address] = SCREEN[address] & (~masks[bit]);
+            }
+
+            return;
         }
 
         /** Draws a line from pixel (x1,y1) to pixel (x2,y2), using the current color. */
