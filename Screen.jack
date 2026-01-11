@@ -118,7 +118,7 @@ class Screen {
             let y = y1;
             
             if (dy=0) {
-                // do Screen.drawHorizontal(x1,x2,y1);
+                do Screen.drawHorizontal(x1,x2,y1);
                 return;
             }
             
@@ -147,6 +147,59 @@ class Screen {
             }
             return;
 
+        }
+
+        function void drawHorizontal(int x1,int x2, int y1) {
+            var int start, end, x_start, x_end;
+
+            var int bit_start, bit_end;
+            var int word;
+
+            let x_start = Math.min(x1,x2);
+            let x_end = Math.max(x1,x2);
+
+            let bit_start = x_start & 15;
+            let bit_end = x_end & 15;
+
+            let start = (^^^^^y) + (####(x_start));
+            let end = (^^^^^y) + (####(x_end);
+
+            if (start=end) {
+                
+                if (color) {
+
+                } else {
+                    
+                }
+                return;
+            }
+
+            if((bit_start>0)) {
+                if(color) {
+                    let SCREEN[start] = SCREEN[start]  | ~(masks[bit_start]-1);
+                } else {
+                    let SCREEN[start] = SCREEN[start]  & (masks[bit_start]-1);
+                }
+                let start = start+1;
+            }
+
+            if((bit_end<15)) {
+                if(color) {
+                    let SCREEN[end] = SCREEN[end]  | (masks[bit_end+1]-1);
+                } else {
+                    let SCREEN[end] = SCREEN[end]  & ~(masks[bit_end+1]-1);
+                }
+
+                let end = end-1;
+            }
+
+            let word = start;
+
+            while(~(word > end)) {
+                let SCREEN[word] = color;
+                let word = word+1;
+            }
+            return;
         }
 
         /** Draws a filled rectangle whose top left corner is (x1, y1)
