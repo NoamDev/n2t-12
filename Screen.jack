@@ -105,11 +105,54 @@ class Screen {
             // The case where y1 == y2 can be implemented efficiently by
             // trying to draw as many pixels as possible in a single assignment,
             // similarly to Fill in project 4.
+            var int dx, dy, step_x, step_y;
+            var int a, b, x, y;
+            var int diff;
+
+            let diff = 0;
+            let a = 0;
+            let b = 0;
+            let dx = Math.abs(x2-x1);
+            let dy = Math.abs(y2-y1);
+            let x = x1;
+            let y = y1;
+            
+            if (dy=0) {
+                // do Screen.drawHorizontal(x1,x2,y1);
+                return;
+            }
+            
+            if(x2>x1) {
+                let step_x = 1;
+            } else {
+                let step_x = -1;
+            }
+            if(y2>y1) {
+                let step_y = 1;
+            } else {
+                let step_y = -1;
+            }
+
+            while (~((a>dx) | (b>dy))) {
+                do Screen.drawPixel(x, y);
+                if (diff < 0) {
+                    let a = a+1;
+                    let diff = diff + dy;
+                    let x = x + step_x;
+                } else {
+                    let b = b+1;
+                    let diff = diff - dx;
+                    let y = y + step_y;
+                }
+            }
+            return;
+
         }
 
         /** Draws a filled rectangle whose top left corner is (x1, y1)
          * and bottom right corner is (x2,y2), using the current color. */
         function void drawRectangle(int x1, int y1, int x2, int y2) {
+            return;
         }
 
         /** Draws a filled circle of radius r<=181 around (x,y), using the current color. */
@@ -120,5 +163,6 @@ class Screen {
             // 1. for (dy = -r ... r)
             // 2.   let halfWidth = sqrt(r*r - dy*dy)
             // 3.   do drawLine(x-halfWidth, y+dy, x+halfWidth, y+dy)
+            return;
         }
 }
