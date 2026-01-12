@@ -202,6 +202,14 @@ class Screen {
             // 1. for (dy = -r ... r)
             // 2.   let halfWidth = sqrt(r*r - dy*dy)
             // 3.   do drawLine(x-halfWidth, y+dy, x+halfWidth, y+dy)
+            var int dy, halfWidth;
+
+            let dy = -r;
+            while(dy < r) {
+                let halfWidth = Math.sqrt((r*r)-(dy*dy));
+                do Screen.drawHorizontal(x-halfWidth, x+halfWidth, y+dy);
+                let dy = dy + 1;
+            }
             return;
         }
 }
