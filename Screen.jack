@@ -209,7 +209,7 @@ class Screen {
             var int dy, halfWidth;
 
             let dy = -r;
-            while(dy < r) {
+            while(~(dy > r)) {
                 let halfWidth = Math.sqrt((r*r)-(dy*dy));
                 do Screen.drawHorizontal(x-halfWidth, x+halfWidth, y+dy);
                 let dy = dy + 1;
