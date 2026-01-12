@@ -149,7 +149,7 @@ class Screen {
 
         }
 
-        function void drawHorizontal(int x1,int x2, int y1) {
+        function void drawHorizontal(int x1,int x2, int y) {
             var int start, end, x_start, x_end;
 
             var int bit_start, bit_end;
@@ -158,40 +158,26 @@ class Screen {
             let x_start = Math.min(x1,x2);
             let x_end = Math.max(x1,x2);
 
+            while((~(x_start > x_end)) & (((x_start & 15) > 0) | ((x_end & 15) < 15))) {
+                if((x_start & 15) > 0) {
+                    do Screen.drawPixel(x_start, y);
+                    let x_start = x_start+1;
+                }
+                if((x_end & 15) < 15) {
+                    do Screen.drawPixel(x_end, y);
+                    let x_end = x_end-1;
+                }
+            }
+
+            if(x_start > x_end) {
+                return;
+            }
+
             let bit_start = x_start & 15;
             let bit_end = x_end & 15;
 
             let start = (^^^^^y) + (####(x_start));
-            let end = (^^^^^y) + (####(x_end);
-
-            if (start=end) {
-                
-                if (color) {
-
-                } else {
-                    
-                }
-                return;
-            }
-
-            if((bit_start>0)) {
-                if(color) {
-                    let SCREEN[start] = SCREEN[start]  | ~(masks[bit_start]-1);
-                } else {
-                    let SCREEN[start] = SCREEN[start]  & (masks[bit_start]-1);
-                }
-                let start = start+1;
-            }
-
-            if((bit_end<15)) {
-                if(color) {
-                    let SCREEN[end] = SCREEN[end]  | (masks[bit_end+1]-1);
-                } else {
-                    let SCREEN[end] = SCREEN[end]  & ~(masks[bit_end+1]-1);
-                }
-
-                let end = end-1;
-            }
+            let end = (^^^^^y) + (####(x_end));
 
             let word = start;
 
