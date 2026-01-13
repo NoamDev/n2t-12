@@ -124,7 +124,10 @@ class Math {
                 // 2**14 <= shifted_y <= x < 2**15
                 let q = 1;
                 let r = ax - shifted_y;
+                // So that ax = q*shifted_y + r
             }
+
+            let shifted_y = #shifted_y;
 
             while(~(shifted_y < ay)) {
                 if(r < shifted_y) {
